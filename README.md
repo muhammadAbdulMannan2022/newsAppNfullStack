@@ -3,4 +3,6 @@
     <li>all data gatting from a local server</li>
 </ul>
 <hr/>
-<h2>run the comman in both folder `npm install` and `npm run dev` to install dependencies and run the app </h2>
+<h2>run the comman in both folder </h2> 
+`npm install` and `npm run dev`
+<h2>to install dependencies and run the app </h2>
