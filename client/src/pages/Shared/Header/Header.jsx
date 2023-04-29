@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 const Header = () => {
   return (
-    <div>
+    <div className="my-4">
       <div className="text-center">
         <img src={logo} alt="" />
         <p>
@@ -16,14 +16,17 @@ const Header = () => {
         <p>{moment().format("dddd, MMMM D, YYYY")}</p>
       </div>
       <div>
-        <Container className="d-flex justify-content-center">
+        <Container
+          style={{ boxShadow: "0px 5px 5px rgba(0,0,0,0.08)" }}
+          className="d-flex justify-content-center"
+        >
           <Button variant="danger">latest</Button>
           <Marquee className="text-danger" pauseOnHover={true}>
             I can be a React component, multiple React components, or just some
             text.
           </Marquee>
         </Container>
-        <Navbar bg="light" variant="light">
+        <Navbar className="mt-4" bg="light" variant="light">
           <Container className="d-flex">
             <Nav className="mx-auto">
               <Nav.Link href="#home">Home</Nav.Link>
