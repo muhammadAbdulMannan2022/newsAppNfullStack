@@ -57,7 +57,17 @@ const Header = () => {
             </Nav>
             <div className="d-flex align-items-center justify-content-center gap-3">
               <div>
-                <FaUserCircle style={{ width: "40px", height: "40px" }} />
+                {loading ? (
+                  ""
+                ) : user?.photoURL ? (
+                  <img
+                    style={{ width: "40px", height: "40px" }}
+                    className="rounded-circle"
+                    src={user?.photoURL}
+                  />
+                ) : (
+                  <FaUserCircle style={{ width: "40px", height: "40px" }} />
+                )}
               </div>
               {loading ? (
                 ""

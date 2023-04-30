@@ -34,6 +34,8 @@ const AuthProvider = ({ children }) => {
         console.log(error, "error in google signup");
       });
   };
+  const registerWithEmailePassword = () => {};
+  const loginWithEmailPass = () => {};
   const logOut = () => {
     signOut(auth)
       .then(() => {
