@@ -12,8 +12,19 @@ app.get("/", (req, res) => {
 app.get("/categories", (req, res) => {
   res.send(categories);
 });
-app.get("/news", (req, res) => {
-  res.send(news);
+app.get("/category/:id", (req, res) => {
+  const id = req.params.id;
+  if (id === "0") {
+    res.send(news?.default);
+  } else {
+    const newsByCategory = news?.default.filter((n) => n.category_id === id);
+    res.send(newsByCategory);
+  }
+});
+app.get("/news/:id", (req, res) => {
+  const id = req.params.id;
+  const theNews = news?.default.find((news) => news._id === id);
+  res.send(theNews);
 });
 app.listen(port, () => {
   console.log("Server listening on port " + port + " !");

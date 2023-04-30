@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 import {
   FaGoogle,
@@ -9,12 +9,15 @@ import {
 } from "react-icons/fa";
 import SideBg from "../../../assets/bg1.png";
 import Qzoon from "../Qzoon/Qzoon";
+import { AuthContext } from "../../../providers/AuthProvider";
 const Rightnav = () => {
+  const { signUpWithGoogle } = useContext(AuthContext);
   return (
     <div className="d-flex flex-column gap-4">
       <div className="d-flex flex-column gap-2">
         <h4>Login with</h4>
         <Button
+          onClick={signUpWithGoogle}
           className="d-flex align-items-center justify-content-center gap-2"
           variant="outline-primary"
         >

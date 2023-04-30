@@ -5,20 +5,17 @@ import { Col, Container, Row } from "react-bootstrap";
 import Leftnav from "../pages/Shared/Leftnav/Leftnav";
 import Rightnav from "../pages/Shared/Rightnav/Rightnav";
 import { Outlet } from "react-router-dom";
-
-const Main = () => {
+import Editorsinsights from "../pages/Home/NewsCard/Editorsinsights/Editorsinsights";
+const Newslayout = () => {
   return (
     <div>
       <Header />
       <Container>
         <Row>
-          <Col lg={3}>
-            <Leftnav />
-          </Col>
-          <Col lg={6}>
+          <Col lg={8}>
             <Outlet />
           </Col>
-          <Col lg={3}>
+          <Col lg={4}>
             <Rightnav />
           </Col>
         </Row>
@@ -28,4 +25,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Newslayout;

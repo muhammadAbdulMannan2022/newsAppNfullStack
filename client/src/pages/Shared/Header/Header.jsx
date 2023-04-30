@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../../assets/logo.png";
 import moment from "moment";
 import Marquee from "react-fast-marquee";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../../../providers/AuthProvider";
 const Header = () => {
+  const { user, loading, logOut } = useContext(AuthContext);
   return (
     <div className="my-4">
       <div className="text-center">
@@ -29,13 +33,41 @@ const Header = () => {
         <Navbar className="mt-4" bg="light" variant="light">
           <Container className="d-flex">
             <Nav className="mx-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">About</Nav.Link>
-              <Nav.Link href="#pricing">Career</Nav.Link>
+              <Nav.Link>
+                <Link className="text-decoration-none text-secondary" to="/">
+                  Home
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link
+                  className="text-decoration-none text-secondary"
+                  to="/about"
+                >
+                  About
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link
+                  className="text-decoration-none text-secondary"
+                  to="/career"
+                >
+                  Career
+                </Link>
+              </Nav.Link>
             </Nav>
             <div className="d-flex align-items-center justify-content-center gap-3">
-              <div>pro</div>
-              <Button variant="secondary">Login</Button>
+              <div>
+                <FaUserCircle style={{ width: "40px", height: "40px" }} />
+              </div>
+              {loading ? (
+                ""
+              ) : user ? (
+                <Button onClick={logOut} variant="secondary">
+                  Log out
+                </Button>
+              ) : (
+                <Button variant="secondary">Login</Button>
+              )}
             </div>
           </Container>
         </Navbar>
