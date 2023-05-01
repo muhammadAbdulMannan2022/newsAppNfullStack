@@ -11,7 +11,16 @@ const News = () => {
   return (
     <>
       <Card style={{ width: "100%" }}>
-        <Card.Img style={{ Width: "100%" }} variant="top" src={thumbnail_url} />
+        <div className="d-flex align-items-center justify-content-center">
+          <Card.Img
+            style={{
+              maxWidth: "80%",
+              maxHeight: "400px",
+            }}
+            variant="top"
+            src={thumbnail_url}
+          />
+        </div>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{details}</Card.Text>

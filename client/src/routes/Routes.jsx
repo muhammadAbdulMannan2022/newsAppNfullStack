@@ -52,7 +52,9 @@ const router = createBrowserRouter([
           </Privateroute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/news/${params.id}`),
+          fetch(
+            `https://server-muhammadabdulmannan2022.vercel.app/news/${params.id}`
+          ),
       },
     ],
   },
