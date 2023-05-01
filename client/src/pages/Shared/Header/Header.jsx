@@ -32,28 +32,28 @@ const Header = () => {
         </Container>
         <Navbar className="mt-4" bg="light" variant="light">
           <Container className="d-flex">
-            <Nav className="mx-auto">
-              <Nav.Link>
+            <Nav className="mx-auto d-flex gap-3">
+              <span>
                 <Link className="text-decoration-none text-secondary" to="/">
                   Home
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
+              </span>
+              <span>
                 <Link
                   className="text-decoration-none text-secondary"
                   to="/about"
                 >
                   About
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
+              </span>
+              <span>
                 <Link
                   className="text-decoration-none text-secondary"
                   to="/career"
                 >
                   Career
                 </Link>
-              </Nav.Link>
+              </span>
             </Nav>
             <div className="d-flex align-items-center justify-content-center gap-3">
               <div>
@@ -76,7 +76,9 @@ const Header = () => {
                   Log out
                 </Button>
               ) : (
-                <Button variant="secondary">Login</Button>
+                <Link to="/login">
+                  <Button variant="secondary">Login</Button>
+                </Link>
               )}
             </div>
           </Container>

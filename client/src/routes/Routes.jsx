@@ -7,6 +7,8 @@ import News from "../pages/News/News";
 import Editorsinsights from "../pages/Home/NewsCard/Editorsinsights/Editorsinsights";
 import Privateroute from "../Private/Privateroute";
 import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
+import Loginlayout from "../layouts/Loginlayout";
 
 const router = createBrowserRouter([
   {
@@ -50,8 +52,24 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/login" || "/register",
+    element: <Loginlayout />,
+    children: [
+      {
+        path: "/login/",
+        element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/register",
+    element: <Loginlayout />,
+    children: [
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
   },
 ]);
 export default router;
