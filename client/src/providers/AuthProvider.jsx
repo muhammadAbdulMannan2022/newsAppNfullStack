@@ -1,8 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -23,19 +26,48 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const signUpWithGoogle = () => {
+    setLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const user = result.user;
-        console.log(user);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error, "error in google signup");
       });
   };
-  const registerWithEmailePassword = () => {};
-  const loginWithEmailPass = () => {};
+  const registerWithEmailePassword = (email, password) => {
+    setLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("user created");
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err, "error in auth => register line 44");
+      });
+  };
+  const loginWithEmailPass = (email, password) => {
+    setLoading(true);
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("user log in seccessful");
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err.masage, "err in auth => login line 54");
+      });
+  };
+  const signupWithGithub = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const logOut = () => {
     signOut(auth)
       .then(() => {
@@ -43,8 +75,15 @@ const AuthProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
-  const authInfo = { user, loading, signUpWithGoogle, logOut };
-  console.log(user);
+  const authInfo = {
+    user,
+    loading,
+    signUpWithGoogle,
+    logOut,
+    registerWithEmailePassword,
+    loginWithEmailPass,
+    signupWithGithub,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

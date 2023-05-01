@@ -11,9 +11,19 @@ import SideBg from "../../../assets/bg1.png";
 import Qzoon from "../Qzoon/Qzoon";
 import { AuthContext } from "../../../providers/AuthProvider";
 const Rightnav = () => {
-  const { signUpWithGoogle } = useContext(AuthContext);
+  const { signUpWithGoogle, signupWithGithub } = useContext(AuthContext);
   return (
-    <div className="d-flex flex-column gap-4">
+    <div
+      style={{
+        position: "sticky",
+        top: "180px",
+        right: "0",
+        height: "calc(100vh - 180px)",
+        overflowY: "scroll",
+        scrollbarWidth: "none",
+      }}
+      className="d-flex flex-column gap-4"
+    >
       <div className="d-flex flex-column gap-2">
         <h4>Login with</h4>
         <Button
@@ -25,6 +35,7 @@ const Rightnav = () => {
           Login with Google
         </Button>
         <Button
+          onClick={signupWithGithub}
           className="d-flex align-items-center justify-content-center gap-2"
           variant="outline-secondary"
         >

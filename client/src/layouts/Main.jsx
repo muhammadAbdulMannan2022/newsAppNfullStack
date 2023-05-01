@@ -12,13 +12,13 @@ const Main = () => {
       <Header />
       <Container>
         <Row>
-          <Col lg={3}>
+          <Col style={{ position: "relative" }} lg={3}>
             <Leftnav />
           </Col>
           <Col lg={6}>
             <Outlet />
           </Col>
-          <Col lg={3}>
+          <Col style={{ position: "relative" }} lg={3}>
             <Rightnav />
           </Col>
         </Row>

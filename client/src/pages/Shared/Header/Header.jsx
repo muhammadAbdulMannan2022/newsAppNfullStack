@@ -9,7 +9,17 @@ import { AuthContext } from "../../../providers/AuthProvider";
 const Header = () => {
   const { user, loading, logOut } = useContext(AuthContext);
   return (
-    <div className="my-4">
+    <div
+      style={{
+        position: "sticky",
+        top: "-130px",
+        left: "0",
+        zIndex: "5",
+        height: "300px",
+        background: "#fff",
+      }}
+      className="my-4"
+    >
       <div className="text-center">
         <img src={logo} alt="" />
         <p>

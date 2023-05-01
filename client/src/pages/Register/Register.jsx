@@ -1,16 +1,25 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { registerWithEmailePassword } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
+    const { state } = useLocation();
     event.preventDefault();
     // handle login logic here
+    const { email, password } = event.target;
+    registerWithEmailePassword(email.value, password.value);
+    setEmail("");
+    setPassword("");
+    navigate(state?.from ? state?.from?.pathname : "/");
   };
   return (
     <div
@@ -27,6 +36,7 @@ const Register = () => {
           <Form.Control
             type="email"
             placeholder="Enter email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -37,6 +47,7 @@ const Register = () => {
           <Form.Control
             type="password"
             placeholder="Password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

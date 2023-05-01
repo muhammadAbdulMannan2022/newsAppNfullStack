@@ -12,7 +12,16 @@ const Leftnav = () => {
       });
   }, []);
   return (
-    <div>
+    <div
+      style={{
+        position: "sticky",
+        top: "180px",
+        left: "0",
+        height: "calc(100vh - 180px)",
+        overflowY: "scroll",
+        scrollbarWidth: "none",
+      }}
+    >
       <h4>All Categoriy</h4>
       {console.log(categoriys)}
       <div className="ps-4">
