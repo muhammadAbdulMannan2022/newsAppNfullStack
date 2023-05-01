@@ -4,6 +4,7 @@ import NewsCard from "../NewsCard/NewsCard";
 
 const Category = () => {
   const catagoryNews = useLoaderData();
+  console.log(catagoryNews);
   return (
     <div>
       {catagoryNews.map((news) => (

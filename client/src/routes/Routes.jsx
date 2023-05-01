@@ -22,13 +22,18 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <Category></Category>,
-            loader: () => fetch(`http://localhost:5000/category/0`),
+            loader: () =>
+              fetch(
+                `https://server-muhammadabdulmannan2022.vercel.app/category/0`
+              ),
           },
           {
             path: "/category/:id",
             element: <Category></Category>,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/category/${params.id}`),
+              fetch(
+                `https://server-muhammadabdulmannan2022.vercel.app/category/${params.id}`
+              ),
           },
         ],
       },

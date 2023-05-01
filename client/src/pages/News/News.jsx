@@ -6,6 +6,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 const News = () => {
   const news = useLoaderData();
   const { id } = useParams();
+  console.log(news);
   const { _id, title, details, category_id, thumbnail_url } = news;
   return (
     <>
